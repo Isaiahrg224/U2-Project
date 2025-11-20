@@ -1,15 +1,16 @@
+import java.util.Scanner;
 public class Lottery {
-    private int lotteryNumber;
-    private int lotteryNumber1;
-    private int lotteryNumber2;
-    private int lotteryNumber3;
-    private int lotteryNumber4;
-    private int lotteryNumber5;
-    private int lotteryNumber6;
-    private int lotteryNumber7;
-    private int lotteryNumber8;
-    private int lotteryNumber9;
-    private int lotteryNumber10;
+    Scanner scanner = new Scanner(System.in);
+    public int lotteryNumber;
+    public int lotteryNumber1;
+    public int lotteryNumber2;
+    public int lotteryNumber3;
+    public int lotteryNumber4;
+    public int lotteryNumber5;
+    public int lotteryNumber6;
+    public int lotteryNumber7;
+    public int lotteryNumber8;
+    public int lotteryNumber9;
 //    private int number1;
 //    private int number2;
 //    private int number3;
@@ -26,7 +27,7 @@ public class Lottery {
 
 
 
-    public Lottery() {
+    public void runLottery() {
         lotteryNumber1 = (int) (Math.random() * 10 + 1);
         lotteryNumber2 = (int) (Math.random() * 10 + 1) * 10;
         lotteryNumber3 = (int) (Math.random() * 10 + 1) * 100;
@@ -36,10 +37,9 @@ public class Lottery {
         lotteryNumber7 = (int) (Math.random() * 10 + 1) * 1000000;
         lotteryNumber8 = (int) (Math.random() * 10 + 1) * 10000000;
         lotteryNumber9 = (int) (Math.random() * 10 + 1) * 100000000;
-        lotteryNumber10 = (int) (Math.random() * 10 + 1) * 1000000000;
         lotteryNumber = lotteryNumber1 + lotteryNumber2 + lotteryNumber3 + lotteryNumber4 +
                 lotteryNumber5 + lotteryNumber6 + lotteryNumber7 + lotteryNumber8 +
-                lotteryNumber9 + lotteryNumber10;
+                lotteryNumber9;
     }
     public static boolean zeroChecker(int checkedNumber){
         if (digitExtractor(checkedNumber, 1) == 0 || digitExtractor(checkedNumber, 2) == 0 ||
@@ -49,8 +49,8 @@ public class Lottery {
                 digitExtractor(checkedNumber, 6) == 0 ||
                 digitExtractor(checkedNumber, 7) == 0 ||
                 digitExtractor(checkedNumber, 8) == 0 ||
-                digitExtractor(checkedNumber, 9) == 0 ||
-                digitExtractor(checkedNumber, 10) == 0) {
+                digitExtractor(checkedNumber, 9) == 0)
+        {
             return true;
         }
         return false;
@@ -63,7 +63,7 @@ public class Lottery {
          return (returnNumber);
     }
 
-    public void scoreCalculator (int userNumber) {
+    public int scoreCalculator (int userNumber) {
         int scoreModifier = 0;
         int payout;
 
@@ -100,13 +100,38 @@ public class Lottery {
         if (digitExtractor(userNumber, 9) == lotteryNumber9){
             scoreModifier += 1;
         }
-        if (digitExtractor(userNumber, 10) == lotteryNumber10){
-            scoreModifier += 1;
-        }
         payout = (int )Math.pow(3, scoreModifier - 1);
         if (userNumber == lotteryNumber) {
-            scoreModifier = 100000000;
+            payout = 10000000;
         }
+        return payout;
+    }
+    public void lottertyRepetitons (int amountOfTickets) {
+        runLottery();
+        for (int i = 1; i <= amountOfTickets; i++) {
+            int score = 0;
+            System.out.println("For this ticket what lottery number do you want purchase?");
+            String inputTicket = scanner.nextLine();
+            int ticketNumber;
+            if (inputTicket == "r")
+            {
+               ticketNumber = (int) (Math.random() * 10 + 1) + (int) (Math.random() * 10 + 1) * 10
+                       + (int) (Math.random() * 10 + 1) * 100 + (int) (Math.random() * 10 + 1) * 1000
+                       + (int) (Math.random() * 10 + 1) * 10000 + (int) (Math.random() * 10 + 1) * 100000
+                       + (int) (Math.random() * 10 + 1) * 1000000 + (int) (Math.random() * 10 + 1) * 10000000
+                       + (int) (Math.random() * 10 + 1) * 100000000;
+                score += scoreCalculator(ticketNumber);
+        }
+        else if (Integer.parseInt(inputTicket) <= 999999999 && zeroChecker(Integer.parseInt(inputTicket))){
+            ticketNumber = Integer.parseInt(inputTicket);
+                score += scoreCalculator(ticketNumber);
+            }
+        else {
+                System.out.println("Invalid number response try again");
+                i = i -1;
+            }
+
     }
 
+}
 }

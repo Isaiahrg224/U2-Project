@@ -8,7 +8,7 @@ public class Main {
         System.out.println("-The Lottery is 10 digits, so only guess that many");
         System.out.println("-If the you are asked a yes or no question answer with either yes, no, y, or n");
         System.out.println("-For each lottery ticket you purchase you will be asked for what" +
-                " numbers you want for it, respond with either 10 digits, or if you want it randomized, respond " +
+                " numbers you want for it, respond with either 9 digits, or if you want it randomized, respond " +
                 "with r or random");
         System.out.println("-There are not going to be any zeros used in the lottery so only uses ten digit" +
                 " numbers containing the numbers 1-9");
@@ -23,6 +23,7 @@ public class Main {
         System.out.println();
         System.out.print("So how many lottery tickets do you want to buy?");
         int amountOfTickets = scanner.nextInt();
+        lotterRepitions(amountOfTickets);
 
 
     }
