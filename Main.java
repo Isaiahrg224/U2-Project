@@ -21,11 +21,11 @@ public class Main {
         System.out.println("    -Finally, if every digit is guessed correctly, there will be " +
                 "a payout of 1 billion dollars");
         System.out.println();
-        System.out.print("So how many lottery tickets do you want to buy?");
-        lottery
-        int amountOfTickets = scanner.nextInt();
-        Lottery Lottery = new Lottery();
-        Lottery.lottertyRunner(amountOfTickets);
+
+//        int amountOfTickets = scanner.nextInt();
+//        Lottery Lottery = new Lottery();
+//        Lottery.lotteryRunner(amountOfTickets);
+        Lottery.lotteryRepeater();
 
 
     }
