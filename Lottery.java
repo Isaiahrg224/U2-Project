@@ -26,25 +26,6 @@ public class Lottery {
         lotteryNumber9 = (int) (Math.random() * 10 + 1) * 100000000;
         lotteryNumber = lotteryNumber1 + lotteryNumber2 + lotteryNumber3 + lotteryNumber4 +
                 lotteryNumber5 + lotteryNumber6 + lotteryNumber7 + lotteryNumber8 + lotteryNumber9;
-//        lotteryNumber = 999999999;
-//        lotteryNumber1 = 9;
-//        lotteryNumber3 = 90;
-//        lotteryNumber4 = 900;
-//        lotteryNumber5 = 9000;
-//        lotteryNumber6 = 90000;
-//        lotteryNumber7 = 900000;
-//        lotteryNumber8 = 9000000;
-//        lotteryNumber9 = 90000000;
-//        this.lotteryNumber = lotteryNumber;
-//        this.lotteryNumber1 = lotteryNumber1;
-//        this.lotteryNumber2 = lotteryNumber2;
-//        this.lotteryNumber3 = lotteryNumber3;
-//        this.lotteryNumber4 = lotteryNumber4;
-//        this.lotteryNumber5 = lotteryNumber5;
-//        this.lotteryNumber6 = lotteryNumber6;
-//        this.lotteryNumber7 = lotteryNumber7;
-//        this.lotteryNumber8 = lotteryNumber8;
-//        this.lotteryNumber9 = lotteryNumber9;
     }
 
     public boolean zeroChecker(int checkedNumber) {
@@ -65,8 +46,6 @@ public class Lottery {
         //Digit placement refers to the digits placement in the number, for instance 3 in the number 65432165 would be 1
         return (userNumber % ((int) (Math.pow(10, digitPlacement)))
                 / ((int) (Math.pow(10, digitPlacement - 1))) * ((int) (Math.pow(10, digitPlacement - 1))));
-//        String userNumberString = userNumber + "";
-//        int extractedDigit = Integer.parseInt(userNumberString.substring(digitPlacement - 1, digitPlacement));
     }
 
     public int scoreCalculator(int userNumber) {
@@ -106,7 +85,7 @@ public class Lottery {
         if (digitExtractor(userNumber, 9) == lotteryNumber9) {
             scoreModifier += 1;
         }
-        payout = (int) Math.pow(3, scoreModifier - 1);
+        payout = (int) Math.pow(5, scoreModifier - 1);
         if (userNumber == lotteryNumber) {
             payout = 10000000;
         }
