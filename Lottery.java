@@ -11,7 +11,6 @@ public class Lottery {
     public int lotteryNumber7;
     public int lotteryNumber8;
     public int lotteryNumber9;
-    public int money = 100;
 
 
     public Lottery() {
@@ -114,7 +113,7 @@ public class Lottery {
         return payout;
     }
 
-    public void lotteryRunner(int amountOfTickets) {
+    public int lotteryRunner(int amountOfTickets, int money) {
         Scanner scanner = new Scanner(System.in);
         int score = 0;
         for (int i = 1; i <= amountOfTickets; i++) {
@@ -143,17 +142,19 @@ public class Lottery {
         System.out.println("From all your tickets you made: $" + score + " giving you a profit of: " + profit +
                 " dollars as the lottery number was: " + lotteryNumber);
         System.out.println("This means you currently have " + money + " dollars.");
+        return (money);
     }
 
     public static void lotteryRepeater() {
 //        import java.util.Scanner;
+        int money = 100;
         Scanner scanner = new Scanner(System.in);
         int wantsToContinue = 1;
         while (wantsToContinue == 1) {
             System.out.print("So how many lottery tickets do you want to buy?");
             int amountOfTickets = scanner.nextInt();
             Lottery Lottery = new Lottery();
-            Lottery.lotteryRunner(amountOfTickets);
+            money = Lottery.lotteryRunner(amountOfTickets, money);
             System.out.print("Do you want to continue the lottery?");
             String userWantsToContinue = "";
             wantsToContinue = 3;
